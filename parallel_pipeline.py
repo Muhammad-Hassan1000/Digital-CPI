@@ -80,7 +80,7 @@ def db_insertion_task(result_dict: dict, task: str, file_logger):
     # Iterate to insert logs for each task/script
     for log_dict in output:
         file_logger.debug(f"Inserting log entry for {path}: {log_dict['log_type']} - {log_dict['line'][:100]}...")
-        prefect_logger.info(f"Passing the following parameters to insert into scraping_logs table: [{path}, {status_id}, {log_dict["timestamp"]}, {log_dict["log_type"]}, {log_dict["line"]}]")
+        prefect_logger.info(f"Passing the following parameters to insert into scraping_logs table: [{path}, {status_id}, {log_dict['timestamp']}, {log_dict['log_type']}, {log_dict['line']}]")
         try:
             # Insert into scraping_logs
             insert_scraping_logs(
