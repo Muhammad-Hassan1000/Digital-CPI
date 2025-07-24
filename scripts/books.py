@@ -42,24 +42,25 @@ def create_csv_path(current_time: str, suffix = ".csv") -> str:
 #%%
 def load_driver1(): # Manual download
     # Set the path where chrome driver is placed
-    path = r"D:\\hassan\\SBP Work\\Digital CPI\\chromedriver-win64\\chromedriver.exe"
-    # path = "chromedriver-linux64/chromedriver" 
     chrome_options = Options()
     chrome_options.add_argument("--headless")
-    # chrome_options.add_argument("--no-sandbox")
-    # chrome_options.add_argument("--disable-setuid-sandbox")
-    chrome_options.add_argument("--start-maximized")
+    # Only Linux
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    #######
+    chrome_options.add_argument("--window-size=1920,1080")
+    # chrome_options.add_argument("--start-maximized")
     # chrome_options.add_argument("--remote-debugging-port=9222")
     chrome_options.add_argument("--disable-gpu")
-    chrome_options.binary_location = r"D:\\hassan\\SBP Work\\Digital CPI\\chrome-win64\\chrome.exe"
+    chrome_options.binary_location = os.path.abspath("/usr/bin/chromium")
     prefs = {
         "profile.managed_default_content_settings.images": 2,
         "profile.managed_default_content_settings.stylesheets": 2
     }
     chrome_options.add_experimental_option("prefs", prefs)
 
-    service = Service(executable_path = path)
-    driver = webdriver.Chrome(service=service,options=chrome_options)
+    # service = Service()
+    driver = webdriver.Chrome(executable_path='/usr/bin/chromedriver', options=chrome_options)
     return driver
 
 #%%

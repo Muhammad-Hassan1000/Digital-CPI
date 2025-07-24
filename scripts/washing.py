@@ -60,15 +60,15 @@ def load_driver1(): # Manual download
     # chrome_options.add_argument("--start-maximized")
     # chrome_options.add_argument("--remote-debugging-port=9222")
     chrome_options.add_argument("--disable-gpu")
-    # chrome_options.binary_location = os.path.abspath("chrome-linux64/chrome")
+    chrome_options.binary_location = os.path.abspath("/usr/bin/chromium")
     prefs = {
         "profile.managed_default_content_settings.images": 2,
         "profile.managed_default_content_settings.stylesheets": 2
     }
     chrome_options.add_experimental_option("prefs", prefs)
 
-    service = Service()
-    driver = webdriver.Chrome(service=service,options=chrome_options)
+    # service = Service()
+    driver = webdriver.Chrome(executable_path='/usr/bin/chromedriver', options=chrome_options)
     return driver
 
 

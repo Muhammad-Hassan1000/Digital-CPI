@@ -6,7 +6,7 @@ import os
 dotenv.load_dotenv(dotenv_path="../")
 DATA_DIR = os.getenv("DATA_DIR")
 
-https_proxy = os.environ.get("https_proxy")
+# https_proxy = os.environ.get("https_proxy")
 
 import pandas as pd
 import numpy as np
@@ -64,17 +64,15 @@ def load_driver1(): # Manual download
     # chrome_options.add_argument("--start-maximized")
     # chrome_options.add_argument("--remote-debugging-port=9222")
     chrome_options.add_argument("--disable-gpu")
-    print(f"Using proxy: {https_proxy}")
-    chrome_options.add_argument(f"--proxy-server={https_proxy}")
-    # chrome_options.binary_location = os.path.abspath("chrome-linux64/chrome")
+    chrome_options.binary_location = os.path.abspath("/usr/bin/chromium")
     prefs = {
         "profile.managed_default_content_settings.images": 2,
         "profile.managed_default_content_settings.stylesheets": 2
     }
     chrome_options.add_experimental_option("prefs", prefs)
 
-    service = Service()
-    driver = webdriver.Chrome(service=service,options=chrome_options)
+    # service = Service()
+    driver = webdriver.Chrome(executable_path='/usr/bin/chromedriver', options=chrome_options)
     return driver
 
 # %%
