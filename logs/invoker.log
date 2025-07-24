@@ -1,0 +1,8 @@
+2025-07-21 07:21:46 UTC | DEBUG    | invoker | Logger 'invoker' initialized with rotating file handler (max_size=10.0MB, backup_count=5, timezone=UTC)
+2025-07-21 07:21:46 UTC | INFO     | invoker | No source ids provided, defaulting to mark all active sources as scheduled.
+2025-07-21 07:21:46 UTC | INFO     | invoker | Successfully updated the status of all active datasource IDs.
+2025-07-21 07:21:46 UTC | INFO     | invoker | Pipeline invoked successfully
+2025-07-23 15:56:08 UTC | DEBUG    | invoker | Logger 'invoker' initialized with rotating file handler (max_size=10.0MB, backup_count=5, timezone=UTC)
+2025-07-23 15:56:08 UTC | INFO     | invoker | No source ids provided, defaulting to mark all active sources as scheduled.
+2025-07-23 15:56:09 UTC | INFO     | invoker | Successfully updated the status of all active datasource IDs.
+2025-07-23 15:56:09 UTC | INFO     | invoker | Pipeline invoked successfully
