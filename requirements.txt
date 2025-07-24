@@ -1,0 +1,4 @@
+prefect==3.3.5
+selenium==4.31.0
+pandas==2.2.2
+sqlite3
