@@ -81,8 +81,14 @@ def main():
                 schedule_sources()
                 logger.info("Successfully updated the status of all active datasource IDs.")
                 try:
-                    subprocess.Popen(["python", PIPELINE_SCRIPT_PATH, "scheduled"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                    logger.info("Pipeline invoked successfully")
+                    # subprocess.Popen(["python", PIPELINE_SCRIPT_PATH, "scheduled"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+                    result = subprocess.run(["python", PIPELINE_SCRIPT_PATH, "scheduled"], capture_output=True, text=True)
+                    if result.stderr:
+                        print(f"Error in Master Pipeline: {result.stderr}")
+                        logger.exception("Pipeline Failed.")
+                    if result.stdout:
+                        print(f"Success in Master Pipeline: {result.stdout}")
+                        logger.info("Pipeline invoked successfully")
                 except Exception as e:
                     logger.error(f"Exception encountered while invoking prefect pipeline: {e!r}")
             except Exception as e:
